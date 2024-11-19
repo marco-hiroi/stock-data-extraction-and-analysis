@@ -14,7 +14,7 @@ def validate_symbol(symbol):
 
 # Uso:
 try:
-    validate_symbol("PETR4.SA")
+    validate_symbol("PETR4")
     print("Símbolo válido e suportado pela API.")
 except ValueError as e:
     print(e)
