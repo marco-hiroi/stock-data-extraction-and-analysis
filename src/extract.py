@@ -22,7 +22,7 @@ def fetch_current_price(symbol):
     return data.get("price")
 
 if __name__ == "__main__":
-    symbol = "PETR4"  # Ativo da B3
+    symbol = "VALE3"  # Ativo da B3
     try:
         print(f"Buscando cotação atual para o ativo: {symbol}")
         current_price = fetch_current_price(symbol)
