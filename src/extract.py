@@ -30,7 +30,7 @@ def fetch_current_price(symbol):
         raise RuntimeError(f"Erro nos dados retornados pela API: {e}")
 
 if __name__ == "__main__":
-    symbol = "PETR4"  # Ativo da B3
+    symbol = "VALE3"  # Ativo da B3
     try:
         print(f"Buscando cotação atual para o ativo: {symbol}")
         current_price = fetch_current_price(symbol)
