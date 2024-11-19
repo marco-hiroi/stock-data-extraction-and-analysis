@@ -19,6 +19,9 @@ def fetch_current_price(symbol):
         if "code" in data:
             raise ValueError(f"Erro na API: {data['message']}")
 
+        # Exibe a resposta para depuração
+        print("Resposta da API:", data)
+
         # Retorna a cotação atual
         return data.get("price", None)
     except requests.exceptions.RequestException as e:
