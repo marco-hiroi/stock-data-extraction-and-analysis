@@ -1,20 +1,25 @@
 import requests
 
-def validate_symbol(symbol):
-    """Valida a disponibilidade do símbolo na API Twelve Data."""
-    url = f"https://api.twelvedata.com/symbol_search"
-    params = {"symbol": symbol, "exchange": "SAO", "apikey": "54d9e27bbaed4e819a5a6e977d801a1f" }
+from config import API_KEY, BASE_URL
+
+def is_symbol_available(symbol, exchange="SAO"):
+    """
+    Verifica se um símbolo está disponível na API Twelve Data.
+    """
+    url = f"{BASE_URL}/symbol_search"
+    params = {"symbol": symbol, "exchange": exchange, "apikey": API_KEY}
     response = requests.get(url, params=params)
+    response.raise_for_status()
     data = response.json()
 
     if "data" in data and len(data["data"]) > 0:
-        return True  # Símbolo válido
+        return True  # Símbolo disponível
     else:
-        raise ValueError(f"O símbolo '{symbol}' não é suportado pela API ou está incorreto.")
+        return False  # Símbolo não disponível
 
-# Uso:
-try:
-    validate_symbol("PETR4")
-    print("Símbolo válido e suportado pela API.")
-except ValueError as e:
-    print(e)
+# Teste o ativo PETR4
+symbol = "PETR4"
+if is_symbol_available(symbol):
+    print(f"O ativo {symbol} está disponível na sua conta.")
+else:
+    print(f"O ativo {symbol} não está disponível na sua conta ou no plano atual.")
