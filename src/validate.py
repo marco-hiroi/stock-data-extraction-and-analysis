@@ -18,7 +18,7 @@ def is_symbol_available(symbol, exchange="SAO"):
         return False  # Símbolo não disponível
 
 # Teste o ativo PETR4
-symbol = "PETR4"
+symbol = "VALE3"
 if is_symbol_available(symbol):
     print(f"O ativo {symbol} está disponível na sua conta.")
 else:
